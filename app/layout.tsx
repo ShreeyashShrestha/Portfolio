@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 import ResponsiveNav from "@/components/Home/Navbar/ResponsiveNav";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const font = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -17,7 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${font.className} h-full antialiased bg-[#0d0d1f]`}
+      className={cn("h-full", "antialiased", "bg-[#0d0d1f]", font.className, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col">
         <ResponsiveNav />
