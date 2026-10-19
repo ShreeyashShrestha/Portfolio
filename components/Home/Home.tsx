@@ -1,4 +1,5 @@
 import Projects from "../Projects/Projects";
+import Contact from "./Contact/Contact";
 import Hero from "./Hero/Hero";
 import Resume from "./Resume/Resume";
 import Services from "./Services/Services";
@@ -12,6 +13,7 @@ const Home = () => {
       <Resume />
       <Projects />
       <Skills />
+      <Contact />
     </div>
   );
 };
