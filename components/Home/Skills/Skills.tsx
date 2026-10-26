@@ -1,12 +1,41 @@
 import LogoLoop from "../Skills/LogoLoop";
 import {
+  SiCss,
+  SiDocker,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiMongodb,
+  SiPostgresql,
+  SiPython,
+  SiApachespark,
+  SiApacheairflow,
   SiReact,
+  SiSupabase,
   SiNextdotjs,
   SiTypescript,
   SiTailwindcss,
 } from "react-icons/si";
 
 const techLogos = [
+  {
+    node: <SiHtml5 />,
+    title: "HTML",
+    href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    hoverColor: "#e34f26",
+  },
+  {
+    node: <SiCss />,
+    title: "CSS",
+    href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    hoverColor: "#1572b6",
+  },
+  {
+    node: <SiJavascript />,
+    title: "JavaScript",
+    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    hoverColor: "#f7df1e",
+  },
   {
     node: <SiReact />,
     title: "React",
@@ -30,6 +59,54 @@ const techLogos = [
     title: "Tailwind CSS",
     href: "https://tailwindcss.com",
     hoverColor: "#38bdf8",
+  },
+  {
+    node: <SiMongodb />,
+    title: "MongoDB",
+    href: "https://www.mongodb.com",
+    hoverColor: "#47a248",
+  },
+  {
+    node: <SiDocker />,
+    title: "Docker",
+    href: "https://www.docker.com",
+    hoverColor: "#2496ed",
+  },
+  {
+    node: <SiSupabase />,
+    title: "Supabase",
+    href: "https://supabase.com",
+    hoverColor: "#3ecf8e",
+  },
+  {
+    node: <SiGithub />,
+    title: "GitHub",
+    href: "https://github.com",
+    hoverColor: "#a3a3a3",
+  },
+  {
+    node: <SiPostgresql />,
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org",
+    hoverColor: "#4169e1",
+  },
+  {
+    node: <SiPython />,
+    title: "Python",
+    href: "https://www.python.org",
+    hoverColor: "#3776ab",
+  },
+  {
+    node: <SiApachespark />,
+    title: "Apache Spark",
+    href: "https://spark.apache.org",
+    hoverColor: "#e25a1c",
+  },
+  {
+    node: <SiApacheairflow />,
+    title: "Apache Airflow",
+    href: "https://airflow.apache.org",
+    hoverColor: "#017cee",
   },
 ];
 

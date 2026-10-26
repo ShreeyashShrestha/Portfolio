@@ -7,6 +7,7 @@ export interface CircularCarouselItem {
   alt?: string;
   title?: string;
   subtitle?: string;
+  objectFit?: 'cover' | 'contain';
 }
 
 export type CircularCarouselPreset = 'cylinder' | 'orbit' | 'wheel' | 'panorama';
@@ -1027,22 +1028,26 @@ const CircularCarousel = ({
           style={{ height: axis === 'x' ? size : cardH, borderRadius: frameRadius }}
         >
           <img
-            className="pointer-events-none absolute block max-w-none select-none object-cover [-webkit-user-drag:none]"
+            className="pointer-events-none absolute block max-w-none select-none [-webkit-user-drag:none]"
             src={item.src}
             alt=""
             draggable={false}
             decoding="async"
-            style={photoStyle}
+            style={{ ...photoStyle, objectFit: item.objectFit ?? 'cover' }}
           />
           {gone && (
             <img
               key={`leaving-${leaving.id}`}
-              className="pointer-events-none absolute block max-w-none select-none object-cover [-webkit-user-drag:none] animate-[circular-carousel-leave_700ms_cubic-bezier(0.33,1,0.68,1)_both]"
+              className="pointer-events-none absolute block max-w-none select-none [-webkit-user-drag:none] animate-[circular-carousel-leave_700ms_cubic-bezier(0.33,1,0.68,1)_both]"
               src={gone.src}
               alt=""
               draggable={false}
               decoding="async"
-              style={{ ...photoStyle, animationDelay: `${Math.round(leaving.delays[index])}ms` }}
+              style={{
+                ...photoStyle,
+                objectFit: gone.objectFit ?? 'cover',
+                animationDelay: `${Math.round(leaving.delays[index])}ms`
+              }}
             />
           )}
           {back && <div className="pointer-events-none absolute inset-0 bg-black opacity-[var(--cc-inner)]" />}
@@ -1119,10 +1124,14 @@ const CircularCarousel = ({
         >
           <span
             key={active}
-            className="flex max-w-full flex-col items-center text-[15px] font-medium leading-[1.35] text-white animate-[circular-carousel-title_520ms_cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none"
+            className="flex max-w-[min(100%,42rem)] flex-col items-center gap-2 text-center text-[15px] font-medium leading-[1.35] text-white animate-[circular-carousel-title_520ms_cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none"
           >
-            {current.title || current.alt}
-            {current.subtitle && <span className="font-normal">{current.subtitle}</span>}
+            <span>{current.title || current.alt}</span>
+            {current.subtitle && (
+              <span className="text-[13px] font-normal leading-relaxed text-white/80">
+                {current.subtitle}
+              </span>
+            )}
           </span>
           <span className="inline-flex items-center gap-[3px] text-[12px] leading-none tabular-nums opacity-50">
             <Digits value={active + 1} />

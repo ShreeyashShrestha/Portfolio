@@ -1,5 +1,5 @@
 import { BiEnvelope, BiMap, BiPhone } from "react-icons/bi";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Contact = () => {
   return (
@@ -37,18 +37,42 @@ const Contact = () => {
 
           {/* Social icons */}
           <div className="flex items-center mt-8 space-x-3">
-            <div className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-800 transition-all duration-300">
+            <a
+              href="https://www.facebook.com/shreeyash.shrestha.7/"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-800 transition-all duration-300"
+            >
               <FaFacebook className="text-white w-6 h-6" />
-            </div>
-            <div className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-red-600 transition-all duration-300">
-              <FaYoutube className="text-white w-6 h-6" />
-            </div>
-            <div className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-sky-400 transition-all duration-300">
-              <FaTwitter className="text-white w-6 h-6" />
-            </div>
-            <div className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-pink-500 transition-all duration-300">
+            </a>
+            <a
+              href="https://github.com/ShreeyashShrestha"
+              aria-label="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-black transition-all duration-300"
+            >
+              <FaGithub className="text-white w-6 h-6" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/shreeyash-shrestha-169a67367/"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-700 transition-all duration-300"
+            >
+              <FaLinkedin className="text-white w-6 h-6" />
+            </a>
+            <a
+              href="https://www.instagram.com/shreeyashshresthaa/"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-pink-500 transition-all duration-300"
+            >
               <FaInstagram className="text-white w-6 h-6" />
-            </div>
+            </a>
           </div>
         </div>
 

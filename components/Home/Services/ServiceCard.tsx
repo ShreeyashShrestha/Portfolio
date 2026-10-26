@@ -9,7 +9,7 @@ type Props = {
 const ServiceCard = ({ description, name, icon }: Props) => {
   return (
     <div>
-      <Image src={icon} alt="img" width={60} height={60} />
+      <Image src={icon} alt="img" width={80} height={80} />
       <h1 className="mt-6 text-xl md:text-2xl font-bold text-gray-200">
         {name}
       </h1>

@@ -12,8 +12,8 @@ const Hero = () => {
           data-aos="fade-up"
           className="mt-6 text-3xl font-bold tracking-wide sm:text-4xl md:text-5xl lg:text-6xl"
         >
-          Creating web products, <br /> brands,{" "}
-          <span className="text-cyan-200">and experiences.</span>
+          Building full-stack, <br /> apps,{" "}
+          <span className="text-cyan-200">with data intelligence</span>
         </h1>
         <h2
           data-aos="fade-up"
@@ -25,9 +25,9 @@ const Hero = () => {
             <Typewriter
               options={{
                 strings: [
-                  "Frontend Developer",
-                  "Backend Developer",
-                  "Web Developer",
+                  "Full Stack Developer",
+                  "Data Engineer",
+                  "Data Enthusiast",
                 ],
                 autoStart: true,
                 loop: true,

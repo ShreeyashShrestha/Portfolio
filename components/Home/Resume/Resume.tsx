@@ -2,6 +2,9 @@ import { FaCodepen, FaReact } from "react-icons/fa";
 import ResumeCard from "./ResumeCard";
 import { BsDatabase } from "react-icons/bs";
 import { BiBadge } from "react-icons/bi";
+import { HiAcademicCap } from "react-icons/hi2";
+import { SiNextdotjs } from "react-icons/si";
+import { FaRedhat } from "react-icons/fa6";
 
 const Resume = () => {
   return (
@@ -17,9 +20,23 @@ const Resume = () => {
             data-aos="zoom-in"
             data-aos-anchor-placement="top-center"
           >
-            <ResumeCard Icon={FaCodepen} role="Full-Stack Developer" />
-            <ResumeCard Icon={FaReact} role="Front-End Developer" />
-            <ResumeCard Icon={BsDatabase} role="Back-End Developer" />
+            <ResumeCard
+              Icon={SiNextdotjs}
+              role="Full-Stack Intern"
+              company="NoveltyLab"
+              date="May 2026 - Nov 2026"
+              description="Built scalable, production-ready web app using Next.js, React, Node.js, and Docker. Focused on connecting robust database systems with automated data pipelines to deliver seamless, data-intelligent user experience."
+            />
+            <ResumeCard
+              Icon={FaReact}
+              role="Front-End Developer"
+              description="Engineered high-performance, responsive web interfaces using Next.js (App Router), React, Typescript, and Tailwind CSS.Focused on building clean, accessible user interfaces, optimizing client and server-side rendering, and seamlessly consuming backend APIs to deliver fast, data-driven user experiences."
+            />
+            <ResumeCard
+              Icon={BsDatabase}
+              role="Back-End Developer"
+              description="Architected scalable backend services and APIs using Node.js, Express, Next.js.Designed and optimized relational and non-relational database schemas using PostgreSQL and MongoDB, containerized microservices with Docker, and integrated automated data engineering pipelines into core application logic."
+            />
           </div>
         </div>
 
@@ -35,19 +52,25 @@ const Resume = () => {
             data-aos-delay="300"
           >
             <ResumeCard
+              Icon={HiAcademicCap}
+              role="Bachelor in Computer Science (Honours)"
+              company="IIMS College"
+              date="Jan 2023 - Dec 2026"
+              description="Specialized in Data Science, combining core compuiter science fundamentals with advanced data management, machine learning, and analytical modeling to build intelligent, data-driven software solutions."
+            />
+            <ResumeCard
               Icon={BiBadge}
-              role="Design Institute of Technology"
-              date="Jan 2023 - Dec 2024"
+              role="Data Engineering Trainig"
+              company="Dlytica Academy"
+              date="Nov 2025 - Mar 2026"
+              description="Focused on building end-to-end data pipelines, ETL workflows, database architecture, big data processing, and cloud-based data orchestration."
             />
             <ResumeCard
-              Icon={FaReact}
-              role="Bachelor in Computer Science"
-              date="Jan 2019 - Dec 2022"
-            />
-            <ResumeCard
-              Icon={BsDatabase}
-              role="Certificate in Digital Marketing"
-              date="Jan 2016 - Dec 2019"
+              Icon={FaRedhat}
+              role="Ethical Hacking"
+              company="BROADWAY INFOSYS"
+              date="Dec 2024 - Feb 2025"
+              description="Focused on network security, vulnerability assessment, penetration testing fundamentals, and secure coding practices for web applications."
             />
           </div>
         </div>

@@ -2,22 +2,28 @@ import CircularCarousel from "../CircularCarousel";
 
 const items = [
   {
-    src: "/Images/p1.jpg",
-    alt: "Mist drifting through a valley",
-    title: "Brand Identity for Startups",
-    subtitle: "Branding, UI/UX",
+    src: "/Images/Converso.png",
+    alt: "converso project",
+    title: "Converso SaaS App",
+    objectFit: "contain" as const,
+    subtitle:
+      "Converso is a real-time AI teaching platform. Browse learning companions, create a tutor for a subject and topic, and practice through a voice session with a live transcript. Sign in to track your companions and completed sessions.",
   },
   {
-    src: "/Images/p2.jpg",
-    alt: "A studio portrait",
-    title: "Portrait",
-    subtitle: "Studio",
+    src: "/Images/MovieFlix.png",
+    alt: "Movieflix app",
+    title: "MovieFlix",
+    objectFit: "contain" as const,
+    subtitle:
+      "MovieFlix is a movie-browsing web app built with Next.js. Browse movies by category, preview available clips from the movie cards, and open a movie page for its trailer and details.",
   },
   {
-    src: "/Images/p3.jpg",
-    alt: "Glass towers from street level",
-    title: "Towers",
-    subtitle: "Architecture",
+    src: "/Images/Note app MERN.png",
+    alt: "Note app MERN",
+    title: "Note App",
+    objectFit: "contain" as const,
+    subtitle:
+      "NoteApp is a full-stack note-taking app built with React and Vite on the frontend and Express, MongoDB, and Node.js on the backend. Create, browse, edit, and delete notes from a responsive interface.",
   },
 ];
 
