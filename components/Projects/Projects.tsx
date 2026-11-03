@@ -31,11 +31,11 @@ const Projects = () => {
   return (
     <>
       <div className="pt-10 pb-10">
-        <h1 className="text-center text-2xl md:text-4xl xl:text-5xl font-bold text-white">
+        <h1 className="px-5 text-center text-2xl md:text-4xl xl:text-5xl font-bold text-white">
           A small selection of recent <br />{" "}
           <span className="text-cyan-300">projects</span>
         </h1>
-        <div style={{ width: "100%", height: "700px", position: "relative" }}>
+        <div className="relative h-[560px] w-full md:h-[700px]">
           <CircularCarousel
             items={items}
             preset="panorama"

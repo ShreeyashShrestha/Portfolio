@@ -1119,7 +1119,7 @@ const CircularCarousel = ({
       </div>
       {captions && current && (
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-[120px] flex flex-col items-center gap-1.5 px-4 text-center animate-[circular-carousel-reveal_900ms_ease_both] motion-reduce:animate-none"
+          className="pointer-events-none absolute inset-x-0 bottom-6 md:bottom-[120px] flex flex-col items-center gap-1.5 px-4 text-center animate-[circular-carousel-reveal_900ms_ease_both] motion-reduce:animate-none"
           aria-hidden="true"
         >
           <span

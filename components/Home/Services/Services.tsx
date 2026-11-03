@@ -2,12 +2,12 @@ import ServiceCard from "./ServiceCard";
 
 const Services = () => {
   return (
-    <div className="pt-16 pb-16">
-      <h1 className="text-center text-2xl md:text-4xl xl:text-5xl font-bold text-white">
+    <div className="py-10 md:py-16">
+      <h1 className="px-5 text-center text-2xl md:text-4xl xl:text-5xl font-bold text-white">
         Collaborate with brands <br /> and agencies to create <br /> impactful
         results
       </h1>
-      <div className="w-[90%] sm:w-[70%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-20 items-center">
+      <div className="w-full px-5 sm:w-[85%] sm:px-0 lg:w-[70%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 md:gap-10 md:mt-20 items-start">
         <div data-aos="fade-right" data-aos-anchor-placement="top-center">
           <ServiceCard
             icon="/Images/s2.png"

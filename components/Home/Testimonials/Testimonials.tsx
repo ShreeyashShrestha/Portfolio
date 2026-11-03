@@ -74,13 +74,13 @@ export default function Testimonials() {
   }
 
   return (
-    <section id="testimonials" aria-labelledby="testimonial-heading" className="py-20 text-white">
+    <section id="testimonials" aria-labelledby="testimonial-heading" className="py-10 md:py-20 text-white">
       {siteKey && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" onReady={() => setScriptReady(true)} />}
-      <div className="mx-auto w-[90%] md:w-[80%] lg:w-[70%]">
+      <div className="mx-auto w-full px-5 sm:w-[90%] sm:px-0 md:w-[80%] lg:w-[70%]">
         <p className="mb-3 text-sm font-semibold tracking-widest text-cyan-200 uppercase">Kind words</p>
         <h2 id="testimonial-heading" className="text-3xl font-bold sm:text-4xl">What people <span className="text-cyan-200">say</span></h2>
         <p className="mt-4 max-w-xl text-gray-400">Worked with me? Share your experience and help others get to know my work.</p>
-        <div className="mt-10 grid items-start gap-10 xl:grid-cols-2">
+        <div className="mt-6 grid items-start gap-6 md:mt-10 md:gap-10 xl:grid-cols-2">
           <div
             className="min-w-0"
             data-aos="fade-right"
@@ -97,12 +97,12 @@ export default function Testimonials() {
           >
             {loading && <p className="text-gray-400">Loading testimonials…</p>}
             {loadError && <div className="rounded-xl border border-white/10 p-6 text-gray-400"><p>{loadError}</p><button type="button" onClick={() => { setLoading(true); setLoadError(""); setAttempt((value) => value + 1); }} className="mt-3 text-cyan-200 underline">Try again</button></div>}
-            {!loading && !loadError && items.length === 0 && <div className="rounded-xl border border-white/10 bg-[#131332] p-8"><h3 className="text-xl font-semibold">Your experience matters</h3><p className="mt-3 text-gray-400">Be the first to leave a review. Approved testimonials will appear here.</p></div>}
-            {items.map((item) => <article key={item._id} className="rounded-xl border border-white/10 bg-[#131332] p-6">
+            {!loading && !loadError && items.length === 0 && <div className="rounded-xl border border-white/10 bg-[#131332] p-5 sm:p-8"><h3 className="text-xl font-semibold">Your experience matters</h3><p className="mt-3 text-gray-400">Be the first to leave a review. Approved testimonials will appear here.</p></div>}
+            {items.map((item) => <article key={item._id} className="rounded-xl border border-white/10 bg-[#131332] p-4 sm:p-6">
               <div className="flex items-center gap-4">
                 {item.imageUrl && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={item.imageUrl} alt="" width={56} height={56} loading="lazy" className="h-14 w-14 rounded-full object-cover" />
+                  <img src={item.imageUrl} alt="" width={56} height={56} loading="lazy" className="h-14 w-14 shrink-0 rounded-full object-cover" />
                 )}
                 <div className="min-w-0"><h3 className="font-semibold break-words">{item.name}</h3><p className="text-sm text-gray-400 break-words">{item.jobTitle} at {item.company}</p></div>
               </div>
@@ -113,7 +113,7 @@ export default function Testimonials() {
           </div>
           <form
             onSubmit={submit}
-            className="rounded-xl bg-[#131332] p-5 sm:p-8"
+            className="min-w-0 rounded-xl bg-[#131332] p-4 sm:p-8"
             data-aos="fade-right"
             data-aos-anchor-placement="top-center"
             data-aos-delay="100"
@@ -132,7 +132,7 @@ export default function Testimonials() {
               <label className="block text-sm">Your review<textarea name="review" required minLength={20} maxLength={1000} rows={5} className={`${inputClass} resize-y`} placeholder="What was it like working together?" /><span className="mt-2 block text-xs text-gray-400">20–1000 characters</span></label>
               <div hidden aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
               <label className="flex items-start gap-3 text-sm text-gray-400"><input className="mt-1 accent-cyan-200" type="checkbox" name="consent" value="yes" required /><span>I agree to my name, job title, company, photo, review, and rating being published on this portfolio.</span></label>
-              {siteKey && <div id="testimonial-captcha" />}
+              {siteKey && <div className="max-w-full overflow-x-auto"><div id="testimonial-captcha" /></div>}
               <button type="submit" className="w-full cursor-pointer rounded-lg bg-cyan-200 px-6 py-3 font-semibold text-slate-950 transition hover:bg-cyan-100 focus-visible:ring-2 focus-visible:ring-white disabled:cursor-wait">{pending ? "Submitting…" : "Submit review"}</button>
             </fieldset>
             <p role="status" aria-live="polite" className={`mt-4 text-sm ${failed ? "text-rose-300" : "text-cyan-200"}`}>{notice}</p>

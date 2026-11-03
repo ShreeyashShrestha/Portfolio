@@ -6,11 +6,11 @@ import Lanyard from "./Lanyard";
 
 const Hero = () => {
   return (
-    <div className="relative -mb-12 flex min-h-screen -translate-y-12 flex-col items-center justify-center overflow-hidden py-16 text-white md:mb-0 md:h-screen md:translate-y-0 md:flex-row md:py-0">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden pt-20 pb-10 text-white md:h-screen md:min-h-screen md:flex-row md:py-0">
       <div className="hero-copy relative z-10 order-2 flex w-full flex-col items-center px-6 text-center sm:px-10 md:order-1 md:w-1/2 md:items-start md:px-8 md:text-left lg:px-14">
         <h1
           data-aos="fade-up"
-          className="mt-6 text-3xl font-bold tracking-wide sm:text-4xl md:text-5xl lg:text-6xl"
+          className="mt-2 text-3xl md:mt-6 font-bold tracking-wide sm:text-4xl md:text-5xl lg:text-6xl"
         >
           Building full-stack, <br /> apps,{" "}
           <span className="text-cyan-200">with data intelligence</span>
@@ -18,7 +18,7 @@ const Hero = () => {
         <h2
           data-aos="fade-up"
           data-aos-delay="200"
-          className="mt-5 text-sm font-medium sm:text-xl md:text-lg lg:text-2xl"
+          className="mt-4 min-h-12 text-sm leading-relaxed font-medium md:mt-5 md:min-h-0 sm:text-xl md:text-lg lg:text-2xl"
         >
           Hi! I&apos;m Shreeyash - A Passionate
           <span className="text-cyan-200 font-bold">
@@ -49,7 +49,7 @@ const Hero = () => {
           <BsArrowRight className="ml-2 inline-block h-5 w-5" />
         </Link>
       </div>
-      <div className="relative z-10 order-1 h-[340px] w-full max-w-[420px] sm:h-[420px] md:order-2 md:h-[min(80vh,600px)] md:w-1/2 md:max-w-none">
+      <div className="relative z-10 order-1 h-[280px] w-full max-w-[420px] sm:h-[420px] md:order-2 md:h-[min(80vh,600px)] md:w-1/2 md:max-w-none">
         <Lanyard
           frontImage="/Images/mah.jpg"
           backImage="/Images/IT-card.png"

@@ -8,15 +8,15 @@ import { FaRedhat } from "react-icons/fa6";
 
 const Resume = () => {
   return (
-    <div className="pt-20 pb-16">
-      <div className="w-[90%] sm:w-[70%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div className="py-10 md:pt-20 md:pb-16">
+      <div className="w-full px-5 sm:w-[85%] sm:px-0 lg:w-[70%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Work part */}
         <div>
           <h1 className="text-3xl sm:text-4xl font-bold text-white">
             My Work <span className="text-cyan-200">Experience</span>
           </h1>
           <div
-            className="mt-10"
+            className="mt-6 md:mt-10"
             data-aos="zoom-in"
             data-aos-anchor-placement="top-center"
           >
@@ -46,7 +46,7 @@ const Resume = () => {
             My <span className="text-cyan-200">Education</span>
           </h1>
           <div
-            className="mt-10"
+            className="mt-6 md:mt-10"
             data-aos="zoom-out"
             data-aos-anchor-placement="top-center"
             data-aos-delay="300"

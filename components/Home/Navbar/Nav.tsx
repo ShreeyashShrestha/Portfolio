@@ -31,7 +31,7 @@ const Nav = ({ openNav }: Props) => {
 
   return (
     <div
-      className={`transition-all ${navBg ? "bg-[#0f142ed9] shadow-md" : "fixed"} duration-200 h-[12vh] z-[10000] fixed w-full`}
+      className={`transition-all ${navBg ? "bg-[#0f142ed9] shadow-md" : "fixed"} duration-200 h-20 md:h-[12vh] z-[10000] fixed w-full`}
     >
       <div className="flex items-center h-full justify-between w-[90%] mx-auto">
         {/* logo */}
@@ -58,11 +58,11 @@ const Nav = ({ openNav }: Props) => {
           })}
         </div>
         {/* buttons */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           {/* CV button */}
           <div>
             <a href="/Shreeyash_Shrestha_CV.pdf" download={true}>
-              <button className="px-8 py-3.5 text-sm cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2">
+              <button className="px-4 sm:px-8 py-3 sm:py-3.5 text-sm cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2">
                 <BiDownload className="w-5 h-5" />
                 <span>Download CV</span>
               </button>
