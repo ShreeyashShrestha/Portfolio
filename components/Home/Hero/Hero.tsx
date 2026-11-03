@@ -52,7 +52,7 @@ const Hero = () => {
       <div className="relative z-10 order-1 h-[340px] w-full max-w-[420px] sm:h-[420px] md:order-2 md:h-[min(80vh,600px)] md:w-1/2 md:max-w-none">
         <Lanyard
           frontImage="/Images/mah.jpg"
-          backImage="/Images/id-card-back.png"
+          backImage="/Images/IT-card.png"
           strapImage="/Images/band.png"
           imageFit="cover"
           cardColor="#ffffff"
