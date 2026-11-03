@@ -26,10 +26,13 @@ const Contact = () => {
     formData.set("subject", "New portfolio contact message");
     formData.set("from_name", "Shreeyash Portfolio");
     setPending(true);
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 20000);
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
+        signal: controller.signal,
       });
       const data = await response.json();
       if (!response.ok || !data.success) {
@@ -39,8 +42,17 @@ const Contact = () => {
       form.reset();
     } catch (error) {
       setFailed(true);
-      setResult(error instanceof Error ? error.message : "Unable to send your message. Please try again.");
+      setResult(
+        controller.signal.aborted
+          ? "Sending timed out. Delivery could not be confirmed. Please check your connection before trying again."
+          : error instanceof TypeError
+            ? "Could not connect to the form service. Please check your connection or try another browser. You can also contact me by email or phone."
+            : error instanceof Error
+              ? error.message
+              : "Unable to send your message. Please try again.",
+      );
     } finally {
+      window.clearTimeout(timeout);
       setPending(false);
     }
   };
