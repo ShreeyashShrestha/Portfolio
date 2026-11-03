@@ -6,6 +6,7 @@ import Hero from "./Hero/Hero";
 import Resume from "./Resume/Resume";
 import Services from "./Services/Services";
 import Skills from "./Skills/Skills";
+import Testimonials from "./Testimonials/Testimonials";
 
 import "aos/dist/aos.css";
 import Aos from "aos";
@@ -32,6 +33,7 @@ const Home = () => {
       <Resume />
       <Projects />
       <Skills />
+      <Testimonials />
       <Contact />
     </div>
   );
