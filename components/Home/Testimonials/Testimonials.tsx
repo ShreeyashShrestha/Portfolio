@@ -81,7 +81,11 @@ export default function Testimonials() {
         <h2 id="testimonial-heading" className="text-3xl font-bold sm:text-4xl">What people <span className="text-cyan-200">say</span></h2>
         <p className="mt-4 max-w-xl text-gray-400">Worked with me? Share your experience and help others get to know my work.</p>
         <div className="mt-10 grid items-start gap-10 xl:grid-cols-2">
-          <div className="min-w-0">
+          <div
+            className="min-w-0"
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+          >
             {items.length > 0 && <p id="reviews-scroll-help" className="mb-3 text-sm text-gray-400">Scroll to read more reviews.</p>}
           <div
             role="region"
@@ -107,7 +111,13 @@ export default function Testimonials() {
             </article>)}
           </div>
           </div>
-          <form onSubmit={submit} className="rounded-xl bg-[#131332] p-5 sm:p-8">
+          <form
+            onSubmit={submit}
+            className="rounded-xl bg-[#131332] p-5 sm:p-8"
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="100"
+          >
             <h3 className="text-2xl font-semibold">Leave a review</h3>
             <p className="mt-2 text-sm text-gray-400">Reviews are checked before appearing on the website.</p>
             <fieldset disabled={pending} className="mt-6 space-y-5 disabled:opacity-60">
