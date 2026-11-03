@@ -35,14 +35,14 @@ const Nav = ({ openNav }: Props) => {
     >
       <div className="flex items-center h-full justify-between w-[90%] mx-auto">
         {/* logo */}
-        <div className="flex items-center space-x-2">
+        <Link href="/" aria-label="Shreeyash home" className="flex items-center space-x-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
           <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-col">
             <FaCode className="w-5 h-5 text-black" />
           </div>
           <h1 className="text-xl hidden sm:block md:text-2xl text-white font-bold">
             Shreeyash
           </h1>
-        </div>
+        </Link>
         {/* navLinks */}
         <div className="hidden lg:flex items-center space-x-10">
           {NavLinks.map((link) => {
