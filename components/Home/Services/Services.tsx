@@ -10,7 +10,7 @@ const Services = () => {
       <div className="w-[90%] sm:w-[70%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-20 items-center">
         <div data-aos="fade-right" data-aos-anchor-placement="top-center">
           <ServiceCard
-            icon="/images/s2.png"
+            icon="/Images/s2.png"
             name="Full-Stack Web Development"
             description="Modern Uis, REST APIs, custom backends, and relational/non-relational database design."
           />
@@ -21,7 +21,7 @@ const Services = () => {
           data-aos-delay="100"
         >
           <ServiceCard
-            icon="/images/data_pipeline.png"
+            icon="/Images/data_pipeline.png"
             name="Data Engineering & Pipelines"
             description="Automated data pipelines, backend data flow, database optimization, and containerization."
           />
@@ -32,7 +32,7 @@ const Services = () => {
           data-aos-delay="200"
         >
           <ServiceCard
-            icon="/images/web_integration.png"
+            icon="/Images/web_integration.png"
             name="Intelligent Web Integration"
             description="Interactive dashboards, data-driven features, and seamless backend-to-analytics flow."
           />
@@ -43,7 +43,7 @@ const Services = () => {
           data-aos-delay="300"
         >
           <ServiceCard
-            icon="/images/data_analysis.png"
+            icon="/Images/data_analysis.png"
             name="Data Analysis & Insights"
             description="Dataset cleaning, statistical analysis, KPI tracking, and actionable reporting."
           />

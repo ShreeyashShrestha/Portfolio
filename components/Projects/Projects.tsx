@@ -10,7 +10,7 @@ const items = [
       "Converso is a real-time AI teaching platform. Browse learning companions, create a tutor for a subject and topic, and practice through a voice session with a live transcript. Sign in to track your companions and completed sessions.",
   },
   {
-    src: "/Images/MovieFlix.png",
+    src: "/Images/Movieflix.png",
     alt: "Movieflix app",
     title: "MovieFlix",
     objectFit: "contain" as const,
