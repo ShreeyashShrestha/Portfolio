@@ -1,9 +1,12 @@
 import Projects from "@/components/Projects/Projects";
+import { getProjects } from "@/lib/sanity/projects";
 
-const WorkPage = () => {
+export const dynamic = "force-dynamic";
+
+const WorkPage = async () => {
   return (
     <div className="pt-28 md:pt-[12vh]">
-      <Projects />
+      <Projects projects={await getProjects()} />
     </div>
   );
 };

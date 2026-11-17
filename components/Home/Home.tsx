@@ -10,8 +10,9 @@ import Testimonials from "./Testimonials/Testimonials";
 
 import "aos/dist/aos.css";
 import Aos from "aos";
+import type { Project } from "@/lib/projects";
 
-const Home = () => {
+const Home = ({ projects }: { projects: Project[] }) => {
   useEffect(() => {
     const initAos = async () => {
       await import("aos");
@@ -31,7 +32,7 @@ const Home = () => {
       <Hero />
       <Services />
       <Resume />
-      <Projects />
+      <Projects projects={projects} />
       <Skills />
       <Testimonials />
       <Contact />

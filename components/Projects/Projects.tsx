@@ -1,47 +1,45 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import CircularCarousel from "../CircularCarousel";
+import type { Project } from "@/lib/projects";
 
-const items = [
-  {
-    src: "/Images/Converso.png",
-    alt: "converso project",
-    title: "Converso SaaS App",
-    objectFit: "contain" as const,
-    subtitle:
-      "Converso is a real-time AI teaching platform. Browse learning companions, create a tutor for a subject and topic, and practice through a voice session with a live transcript. Sign in to track your companions and completed sessions.",
-  },
-  {
-    src: "/Images/Movieflix.png",
-    alt: "Movieflix app",
-    title: "MovieFlix",
-    objectFit: "contain" as const,
-    subtitle:
-      "MovieFlix is a movie-browsing web app built with Next.js. Browse movies by category, preview available clips from the movie cards, and open a movie page for its trailer and details.",
-  },
-  {
-    src: "/Images/Note app MERN.png",
-    alt: "Note app MERN",
-    title: "Note App",
-    objectFit: "contain" as const,
-    subtitle:
-      "NoteApp is a full-stack note-taking app built with React and Vite on the frontend and Express, MongoDB, and Node.js on the backend. Create, browse, edit, and delete notes from a responsive interface.",
-  },
-];
+export default function Projects({ projects }: { projects: Project[] }) {
+  const router = useRouter();
+  const [cardWidth, setCardWidth] = useState(420);
 
-const Projects = () => {
+  useEffect(() => {
+    const resizeCards = () => {
+      setCardWidth(window.innerWidth >= 1024
+        ? Math.min(860, Math.max(640, Math.round(window.innerWidth * 0.58)))
+        : 420);
+    };
+    resizeCards();
+    window.addEventListener("resize", resizeCards);
+    return () => window.removeEventListener("resize", resizeCards);
+  }, []);
+  const items = projects.map(project => ({
+    src: project.cover.url,
+    alt: project.cover.alt,
+    title: project.title,
+    subtitle: project.summary,
+    objectFit: "contain" as const,
+  }));
+
   return (
-    <>
-      <div className="pt-10 pb-10">
-        <h1 className="px-5 text-center text-2xl md:text-4xl xl:text-5xl font-bold text-white">
-          A small selection of recent <br />{" "}
-          <span className="text-cyan-300">projects</span>
-        </h1>
+    <section id="projects" className="pt-10 pb-10" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" className="px-5 text-center text-2xl md:text-4xl xl:text-5xl font-bold text-white">
+        A small selection of recent <br /> <span className="text-cyan-300">projects</span>
+      </h2>
+      {items.length ? (
         <div className="relative h-[560px] w-full md:h-[700px]">
           <CircularCarousel
             items={items}
             preset="panorama"
             intro="rise"
-            cardWidth={420}
-            aspectRatio={1.1}
+            cardWidth={cardWidth}
+            aspectRatio={cardWidth > 420 ? 1.6 : 1.1}
             speed={14}
             captions
             gap={25}
@@ -62,11 +60,13 @@ const Projects = () => {
             depthFade={0.55}
             innerShade={0.6}
             cornerRadius={12}
+            onItemClick={(_, index) => {
+              const project = projects[index];
+              if (project) router.push(`/projects/${encodeURIComponent(project.slug)}`);
+            }}
           />
         </div>
-      </div>
-    </>
+      ) : <p className="mt-8 text-center text-slate-400">New projects are on the way.</p>}
+    </section>
   );
-};
-
-export default Projects;
+}

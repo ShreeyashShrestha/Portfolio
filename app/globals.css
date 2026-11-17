@@ -127,3 +127,31 @@
     @apply font-sans;
     }
 }
+/* Native scrolling keeps touch, trackpad, and keyboard navigation available. */
+.project-track {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1.5rem;
+  padding: .25rem 1.5rem 1rem;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+}
+.project-track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.project-track.is-dragging * { cursor: grabbing; }
+.project-track img { -webkit-user-drag: none; }
+.project-track::-webkit-scrollbar { display: none; }
+.project-track::after { content: ""; flex: 0 0 3%; }
+.project-slide { flex: 0 0 92%; min-width: 0; scroll-snap-align: start; }
+.project-gallery .project-track { padding: .25rem 0 1rem; scroll-padding-inline: 0; }
+.project-gallery .project-track::after { display: none; }
+.project-gallery .project-slide { flex-basis: 100%; }
+.project-track:focus-visible { outline: 2px solid #67e8f9; outline-offset: 3px; }
+@media (min-width: 768px) {
+  .project-track { padding-inline: 2.5rem; scroll-padding-inline: 2.5rem; }
+  .project-slide { flex-basis: 90%; }
+}

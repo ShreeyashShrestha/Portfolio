@@ -408,6 +408,7 @@ const CircularCarousel = ({
   }, [along, axis, curveValue, layout.inward, radius]);
 
   const rootRef = useRef<HTMLDivElement>(null);
+  const captionRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const cameraRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -563,7 +564,7 @@ const CircularCarousel = ({
       const s = settingsRef.current;
       const rect = root.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
-      const room = s.captions ? CAPTION_SPACE : 0;
+      const room = s.captions ? Math.max(CAPTION_SPACE, (captionRef.current?.offsetHeight || 0) + 48) : 0;
       const width = rect.width * 0.94;
       const height = (rect.height - room) * 0.92;
       const P = s.perspective;
@@ -791,6 +792,7 @@ const CircularCarousel = ({
       wake();
     });
     resize.observe(root);
+    if (captionRef.current) resize.observe(captionRef.current);
 
     const io = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
@@ -1119,7 +1121,8 @@ const CircularCarousel = ({
       </div>
       {captions && current && (
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-6 md:bottom-[120px] flex flex-col items-center gap-1.5 px-4 text-center animate-[circular-carousel-reveal_900ms_ease_both] motion-reduce:animate-none"
+          ref={captionRef}
+          className="pointer-events-none absolute inset-x-0 bottom-6 flex flex-col items-center gap-3 px-6 text-center animate-[circular-carousel-reveal_900ms_ease_both] motion-reduce:animate-none"
           aria-hidden="true"
         >
           <span

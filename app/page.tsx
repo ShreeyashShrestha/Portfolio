@@ -1,7 +1,10 @@
 import Home from "@/components/Home/Home";
+import { getProjects } from "@/lib/sanity/projects";
 
-const HomePage = () => {
-  return <Home />;
+export const dynamic = "force-dynamic";
+
+const HomePage = async () => {
+  return <Home projects={await getProjects()} />;
 };
 
 export default HomePage;
