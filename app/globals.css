@@ -127,6 +127,35 @@
     @apply font-sans;
     }
 }
+.portfolio-preloader {
+  transition: opacity 600ms ease;
+}
+.portfolio-preloader[data-phase="leaving"] { opacity: 0; pointer-events: none; }
+.preloader-shine {
+  color: white;
+  background-image: linear-gradient(110deg,
+    #555568 38%, #9191a5 44%, #fff 48%,
+    #fff 52%, #9191a5 56%, #555568 62%);
+  background-size: 300% 100%;
+  background-position: 100% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: preloader-shine-sweep 1400ms linear infinite;
+}
+@keyframes preloader-shine-sweep {
+  from { background-position: 100% center; }
+  to { background-position: 0% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-preloader { transition: none; }
+  .preloader-shine {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: white;
+  }
+}
+
 /* Native scrolling keeps touch, trackpad, and keyboard navigation available. */
 .project-track {
   position: relative;

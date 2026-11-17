@@ -14,17 +14,34 @@ import type { Project } from "@/lib/projects";
 
 const Home = ({ projects }: { projects: Project[] }) => {
   useEffect(() => {
-    const initAos = async () => {
-      await import("aos");
-      Aos.init({
-        duration: 1000,
-        easing: "ease",
-        once: true,
-        anchorPlacement: "top-bottom",
+    let frame: number;
+    let initialized = false;
+
+    const initAos = () => {
+      if (initialized) return;
+      initialized = true;
+      frame = requestAnimationFrame(() => {
+        Aos.init({
+          duration: 1000,
+          easing: "ease",
+          once: true,
+          anchorPlacement: "top-bottom",
+          // Start explicitly, including when the page loads after window.load.
+          startEvent: "portfolio:aos-ready",
+          disable: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        });
+        document.dispatchEvent(new Event("portfolio:aos-ready"));
       });
     };
 
-    initAos();
+    window.addEventListener("portfolio:preloader-done", initAos);
+    // Client navigation can mount Home after the initial preloader is gone.
+    if (!document.getElementById("portfolio-preloader")) initAos();
+
+    return () => {
+      window.removeEventListener("portfolio:preloader-done", initAos);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (

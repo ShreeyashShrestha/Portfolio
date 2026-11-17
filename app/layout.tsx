@@ -5,6 +5,7 @@ import ResponsiveNav from "@/components/Home/Navbar/ResponsiveNav";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Home/Footer/Footer";
 import ScrollToTop from "@/components/Helper/ScrollToTop";
+import Preloader from "@/components/Helper/Preloader";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
     >
       <body className="min-h-full flex flex-col bg-[#0d0d1f]">
+        <Preloader />
         <ResponsiveNav />
         {children}
         <Footer />

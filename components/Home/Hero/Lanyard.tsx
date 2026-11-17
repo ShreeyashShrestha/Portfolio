@@ -47,6 +47,8 @@ export interface LanyardProps {
   intro?: boolean;
   className?: string;
   style?: CSSProperties;
+  /** Extra drawing space below the resting card, without changing its framing. */
+  dragOverflow?: number;
 }
 interface Settings {
   frontImage?: string;
@@ -920,6 +922,7 @@ const Lanyard = ({
   intro = true,
   className = "",
   style,
+  dragOverflow = 0,
 }: LanyardProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const settingsRef = useRef<Settings | null>(null);
@@ -969,6 +972,11 @@ const Lanyard = ({
     renderer.toneMappingExposure = 1;
     const canvas = renderer.domElement;
     canvas.className = "block w-full h-full";
+    if (dragOverflow > 0) {
+      canvas.style.position = "absolute";
+      canvas.style.top = "0";
+      canvas.style.pointerEvents = "none";
+    }
     canvas.setAttribute("aria-hidden", "true");
     container.appendChild(canvas);
     const anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
@@ -1130,6 +1138,9 @@ const Lanyard = ({
         viewHeight = minimumWidth / aspect;
       const viewWidth = viewHeight * aspect;
       camera.aspect = aspect;
+      if (dragOverflow > 0) {
+        camera.setViewOffset(view.width, view.height, 0, 0, view.width, view.height + dragOverflow);
+      }
       camera.position.set(
         0,
         0,
@@ -1447,6 +1458,7 @@ const Lanyard = ({
     };
     const onPointerDown = (event: PointerEvent) => {
       if (!settingsRef.current!.interactive || event.button > 0) return;
+      if (dragOverflow > 0 && (event.target as Element | null)?.closest("a, button, #portfolio-preloader")) return;
       toPointer(event);
       const hit = pickCard();
       if (!hit) return;
@@ -1466,7 +1478,7 @@ const Lanyard = ({
         time: performance.now(),
         point: hit.point.clone(),
       };
-      canvas.setPointerCapture?.(event.pointerId);
+      if (!dragOverflow) canvas.setPointerCapture?.(event.pointerId);
       setCursor("grabbing");
       event.preventDefault();
       start();
@@ -1498,27 +1510,30 @@ const Lanyard = ({
       )
         flip(press.point);
       press = null;
-      canvas.releasePointerCapture?.(event.pointerId);
+      if (!dragOverflow) canvas.releasePointerCapture?.(event.pointerId);
       setCursor(hovering && event.pointerType !== "touch" ? "grab" : "");
       start();
     };
     const onTouchStart = (event: TouchEvent) => {
       if (!settingsRef.current!.interactive || event.touches.length !== 1)
         return;
+      if (dragOverflow > 0 && (event.target as Element | null)?.closest("a, button, #portfolio-preloader")) return;
       toPointer(event.touches[0]);
       if (pickCard()) event.preventDefault();
     };
-    canvas.addEventListener("pointerdown", onPointerDown);
-    canvas.addEventListener("pointermove", onPointerMove);
-    canvas.addEventListener("pointerup", onPointerUp);
-    canvas.addEventListener("pointercancel", onPointerUp);
+    const inputTarget = dragOverflow > 0 ? window : canvas;
+    inputTarget.addEventListener("pointerdown", onPointerDown as EventListener);
+    inputTarget.addEventListener("pointermove", onPointerMove as EventListener);
+    inputTarget.addEventListener("pointerup", onPointerUp as EventListener);
+    inputTarget.addEventListener("pointercancel", onPointerUp as EventListener);
     canvas.addEventListener("lostpointercapture", onPointerUp);
-    canvas.addEventListener("touchstart", onTouchStart, { passive: false });
+    inputTarget.addEventListener("touchstart", onTouchStart as EventListener, { passive: false });
     const resize = () => {
       view.width = Math.max(1, container.clientWidth);
       view.height = Math.max(1, container.clientHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      renderer.setSize(view.width, view.height, false);
+      renderer.setSize(view.width, view.height + dragOverflow, false);
+      if (dragOverflow > 0) canvas.style.height = `${view.height + dragOverflow}px`;
       apply();
       render();
     };
@@ -1542,12 +1557,12 @@ const Lanyard = ({
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
-      canvas.removeEventListener("pointerdown", onPointerDown);
-      canvas.removeEventListener("pointermove", onPointerMove);
-      canvas.removeEventListener("pointerup", onPointerUp);
-      canvas.removeEventListener("pointercancel", onPointerUp);
+      inputTarget.removeEventListener("pointerdown", onPointerDown as EventListener);
+      inputTarget.removeEventListener("pointermove", onPointerMove as EventListener);
+      inputTarget.removeEventListener("pointerup", onPointerUp as EventListener);
+      inputTarget.removeEventListener("pointercancel", onPointerUp as EventListener);
       canvas.removeEventListener("lostpointercapture", onPointerUp);
-      canvas.removeEventListener("touchstart", onTouchStart);
+      inputTarget.removeEventListener("touchstart", onTouchStart as EventListener);
       [bodyMesh, frontMesh, backMesh, ring, clampMesh, eyelet, band].forEach(
         (mesh) => mesh.geometry?.dispose(),
       );
@@ -1565,11 +1580,11 @@ const Lanyard = ({
       renderer.dispose();
       if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
     };
-  }, []);
+  }, [dragOverflow]);
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full overflow-hidden ${className}`.trim()}
+      className={`relative w-full h-full ${dragOverflow > 0 ? "overflow-visible pointer-events-none" : "overflow-hidden"} ${className}`.trim()}
       style={style}
     />
   );
