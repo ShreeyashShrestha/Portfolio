@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import ProjectCarousel from "@/components/Projects/ProjectCarousel";
 import ProjectDescription from "@/components/Projects/ProjectDescription";
+import ProjectImage from "@/components/Projects/ProjectImage";
 import { getProjects } from "@/lib/sanity/projects";
 import { safeProjectUrl } from "@/lib/projects";
 
@@ -22,7 +23,7 @@ export default async function ProjectPage({ params }: Props) {
   const images = project.images.length ? project.images : [project.cover];
   const liveUrl = safeProjectUrl(project.liveUrl);
   const sourceUrl = safeProjectUrl(project.sourceUrl);
-  return <main className="mx-auto w-full max-w-6xl px-6 pb-24 pt-32 text-white md:px-10 md:pt-40">
+  return <main className="mx-auto w-full max-w-6xl px-6 pb-24 pt-20 text-white md:px-10 md:pt-24">
     <Link href="/#projects" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-cyan-300 hover:text-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
       <ArrowLeft size={18} aria-hidden="true" />
       Back to projects
@@ -34,7 +35,7 @@ export default async function ProjectPage({ params }: Props) {
     </header>
     <ProjectCarousel label={`${project.title} screenshots`} thumbnails={images.map((image, index) => <Image key={index} src={image.url} alt="" fill sizes="112px" className="object-contain" unoptimized={image.url.startsWith("https://")} />)}>
       {images.map((image, index) => <figure key={`${image.url}-${index}`} className="project-slide overflow-hidden rounded-2xl border border-white/10 bg-[#090919]">
-        <div className="relative aspect-[16/10] md:aspect-video"><Image src={image.url} alt={image.alt || project.title} fill sizes="(max-width: 768px) 100vw, 1100px" className="object-contain p-3 md:p-6" unoptimized={image.url.startsWith("https://")} /></div>
+        <ProjectImage src={image.url} alt={image.alt || project.title} caption={image.caption} images={images} index={index} />
         {image.caption && <figcaption className="px-6 pb-5 text-sm text-slate-400">{image.caption}</figcaption>}
       </figure>)}
     </ProjectCarousel>

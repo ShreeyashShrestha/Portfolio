@@ -7,7 +7,7 @@ export default function ProjectCarousel({ children, label, thumbnails }: { child
   const drag = useRef<{ id: number; x: number; scroll: number; index: number; moved: boolean } | null>(null);
   const suppressClick = useRef(false);
   const count = Children.count(children);
-  const arrowClass = "absolute top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-[#0d0d1f]/95 text-white shadow-lg transition-colors hover:border-cyan-300 hover:text-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 disabled:cursor-default disabled:opacity-30 disabled:hover:border-white/20 disabled:hover:text-white";
+  const arrowClass = "absolute top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-[#0d0d1f]/95 text-white shadow-lg transition-colors hover:border-cyan-300 hover:text-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 disabled:cursor-default disabled:opacity-30 disabled:hover:border-white/20 disabled:hover:text-white md:grid";
   const go = (index: number) => {
     const element = track.current;
     const child = element?.children[index] as HTMLElement | undefined;
