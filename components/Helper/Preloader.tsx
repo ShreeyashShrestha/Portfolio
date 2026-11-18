@@ -57,7 +57,7 @@ export default function Preloader() {
           <p className="preloader-shine text-[clamp(1.5rem,5vw,3.5rem)] font-medium leading-tight tracking-wide">
             Shreeyash Shrestha
           </p>
-          <p className="preloader-shine mt-4 text-[10px] font-normal uppercase tracking-[0.4em] sm:text-xs">
+          <p className="preloader-shine mt-4 text-xs font-medium uppercase tracking-[0.3em] sm:font-normal sm:tracking-[0.4em]">
             Developer
           </p>
         </div>

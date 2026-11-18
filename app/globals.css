@@ -134,8 +134,8 @@
 .preloader-shine {
   color: white;
   background-image: linear-gradient(110deg,
-    #555568 38%, #9191a5 44%, #fff 48%,
-    #fff 52%, #9191a5 56%, #555568 62%);
+    #a3a3b8 38%, #d0d0df 44%, #fff 48%,
+    #fff 52%, #d0d0df 56%, #a3a3b8 62%);
   background-size: 300% 100%;
   background-position: 100% center;
   -webkit-background-clip: text;
