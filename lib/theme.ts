@@ -1,34 +1,27 @@
-export const themeStorageKey = "portfolio-theme";
-export const systemDarkQuery = "(prefers-color-scheme: dark)";
+const systemDarkQuery = "(prefers-color-scheme: dark)";
 
 export function isDarkMode() {
-  return document.documentElement.classList.contains("dark");
+  const theme = document.documentElement.dataset.theme;
+  return theme ? theme === "dark" : window.matchMedia(systemDarkQuery).matches;
 }
 
 export function subscribeToTheme(onChange: () => void) {
-  const observer = new MutationObserver(onChange);
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["class"],
-  });
-  return () => observer.disconnect();
-}
-
-export const themeInitializationScript = `
-(() => {
   const root = document.documentElement;
-  let preference;
-  try {
-    preference = localStorage.getItem(${JSON.stringify(themeStorageKey)});
-  } catch {}
+  const browserTheme = window.matchMedia(systemDarkQuery);
+  const followBrowserTheme = () => {
+    delete root.dataset.theme;
+    onChange();
+  };
 
-  const hasSavedPreference = preference === "light" || preference === "dark";
-  if (hasSavedPreference) {
-    root.dataset.themePreference = preference;
-  }
+  const observer = new MutationObserver(onChange);
+  observer.observe(root, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+  browserTheme.addEventListener("change", followBrowserTheme);
 
-  const isDark = hasSavedPreference
-    ? preference === "dark"
-    : matchMedia(${JSON.stringify(systemDarkQuery)}).matches;
-  root.classList.toggle("dark", isDark);
-})();`;
+  return () => {
+    observer.disconnect();
+    browserTheme.removeEventListener("change", followBrowserTheme);
+  };
+}

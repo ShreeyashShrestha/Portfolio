@@ -1,48 +1,19 @@
 "use client";
 
-import { isDarkMode, subscribeToTheme, systemDarkQuery, themeStorageKey } from "@/lib/theme";
+import { isDarkMode, subscribeToTheme } from "@/lib/theme";
 import { Moon, Sun } from "lucide-react";
 import { useSyncExternalStore } from "react";
-
-function subscribe(onChange: () => void) {
-  const root = document.documentElement;
-  const systemPreference = window.matchMedia(systemDarkQuery);
-  const syncSystemTheme = () => {
-    if (!root.dataset.themePreference) {
-      root.classList.toggle("dark", systemPreference.matches);
-    }
-  };
-
-  const unsubscribe = subscribeToTheme(onChange);
-  systemPreference.addEventListener("change", syncSystemTheme);
-  syncSystemTheme();
-
-  return () => {
-    unsubscribe();
-    systemPreference.removeEventListener("change", syncSystemTheme);
-  };
-}
 
 function serverIsDarkMode() {
   return false;
 }
 
 function toggleTheme() {
-  const isDark = !isDarkMode();
-  const preference = isDark ? "dark" : "light";
-
-  document.documentElement.dataset.themePreference = preference;
-  document.documentElement.classList.toggle("dark", isDark);
-
-  try {
-    localStorage.setItem(themeStorageKey, preference);
-  } catch {
-    // The choice still applies for this visit when storage is unavailable.
-  }
+  document.documentElement.dataset.theme = isDarkMode() ? "light" : "dark";
 }
 
 export default function ThemeToggle() {
-  const isDark = useSyncExternalStore(subscribe, isDarkMode, serverIsDarkMode);
+  const isDark = useSyncExternalStore(subscribeToTheme, isDarkMode, serverIsDarkMode);
 
   return (
     <button

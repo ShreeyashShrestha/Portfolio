@@ -2,7 +2,17 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark {
+    &:where([data-theme="dark"], [data-theme="dark"] *) {
+        @slot;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        &:where(:root:not([data-theme]), :root:not([data-theme]) *) {
+            @slot;
+        }
+    }
+}
 
 @theme inline {
     --font-heading: var(--font-sans);
@@ -93,26 +103,26 @@
     --sidebar-accent-foreground: var(--accent-foreground);
     --sidebar-border: var(--border);
     --sidebar-ring: var(--ring);
-}
 
-:root.dark {
-    color-scheme: dark;
-    --background: #0d0d1f;
-    --foreground: #ffffff;
-    --card: #131332;
-    --brand: #a5f3fc;
-    --primary: #1e40af;
-    --primary-hover: #1e3a8a;
-    --secondary: #172554;
-    --muted: #1c1c3e;
-    --muted-foreground: #cbd5e1;
-    --action-muted: #131c40;
-    --inset: #090919;
-    --destructive: #fda4af;
-    --success: #86efac;
-    --highlight: #fcd34d;
-    --border: #ffffff26;
-    --input: #363659;
+    @variant dark {
+        color-scheme: dark;
+        --background: #0d0d1f;
+        --foreground: #ffffff;
+        --card: #131332;
+        --brand: #a5f3fc;
+        --primary: #1e40af;
+        --primary-hover: #1e3a8a;
+        --secondary: #172554;
+        --muted: #1c1c3e;
+        --muted-foreground: #cbd5e1;
+        --action-muted: #131c40;
+        --inset: #090919;
+        --destructive: #fda4af;
+        --success: #86efac;
+        --highlight: #fcd34d;
+        --border: #ffffff26;
+        --input: #363659;
+    }
 }
 
 @layer base {
