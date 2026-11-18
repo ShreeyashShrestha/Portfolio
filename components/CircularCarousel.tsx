@@ -1062,7 +1062,7 @@ const CircularCarousel = ({
   return (
     <div
       ref={rootRef}
-      className={`group/cc relative h-full w-full touch-pan-y select-none overflow-hidden outline-none [-webkit-tap-highlight-color:transparent] focus-visible:shadow-[inset_0_0_0_2px_rgba(128,128,140,0.55)] data-[axis=x]:touch-pan-x data-[draggable]:cursor-grab data-[dragging]:cursor-grabbing ${className}`.trim()}
+      className={`group/cc relative h-full w-full touch-pan-y select-none overflow-hidden outline-none [-webkit-tap-highlight-color:transparent] focus-visible:inset-ring-2 focus-visible:inset-ring-brand data-[axis=x]:touch-pan-x data-[draggable]:cursor-grab data-[dragging]:cursor-grabbing ${className}`.trim()}
       style={
         {
           ...style,
@@ -1127,18 +1127,18 @@ const CircularCarousel = ({
         >
           <span
             key={active}
-            className="flex max-w-[min(100%,42rem)] flex-col items-center gap-2 text-center text-[15px] font-medium leading-[1.35] text-white animate-[circular-carousel-title_520ms_cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none"
+            className="flex max-w-[min(100%,42rem)] flex-col items-center gap-2 text-center text-[15px] font-medium leading-[1.35] text-foreground animate-[circular-carousel-title_520ms_cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none"
           >
             <span>{current.title || current.alt}</span>
             {current.subtitle && (
-              <span className="text-[13px] font-normal leading-relaxed text-white/80">
+              <span className="text-[13px] font-normal leading-relaxed text-muted-foreground">
                 {current.subtitle}
               </span>
             )}
           </span>
-          <span className="inline-flex items-center gap-[3px] text-[12px] leading-none tabular-nums opacity-50">
+          <span className="inline-flex items-center gap-[3px] text-[12px] leading-none tabular-nums text-muted-foreground">
             <Digits value={active + 1} />
-            <span className="opacity-60">/</span>
+            <span>/</span>
             <span>{String(count).padStart(2, '0')}</span>
           </span>
         </div>

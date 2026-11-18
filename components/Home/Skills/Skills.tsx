@@ -113,12 +113,12 @@ const techLogos = [
 const Skills = () => {
   return (
     <section className="relative overflow-hidden py-10 md:py-14">
-      <h2 className="mb-8 text-center text-2xl font-bold text-white md:mb-10 md:text-4xl xl:text-5xl">
-        My <span className="text-cyan-300">Skills</span>
+      <h2 className="mb-8 text-center text-2xl font-bold text-foreground md:mb-10 md:text-4xl xl:text-5xl">
+        My <span className="text-brand">Skills</span>
       </h2>
       <LogoLoop
         logos={techLogos}
-        className="text-white"
+        className="text-foreground"
         speed={100}
         direction="left"
         logoHeight={44}

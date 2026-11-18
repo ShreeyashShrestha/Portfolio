@@ -7,7 +7,7 @@ export default function ProjectCarousel({ children, label, thumbnails }: { child
   const drag = useRef<{ id: number; x: number; scroll: number; index: number; moved: boolean } | null>(null);
   const suppressClick = useRef(false);
   const count = Children.count(children);
-  const arrowClass = "absolute top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-[#0d0d1f]/95 text-white shadow-lg transition-colors hover:border-cyan-300 hover:text-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 disabled:cursor-default disabled:opacity-30 disabled:hover:border-white/20 disabled:hover:text-white md:grid";
+  const arrowClass = "absolute top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-border bg-background/95 text-foreground shadow-lg transition-colors enabled:hover:border-brand enabled:hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand disabled:cursor-default disabled:opacity-30 md:grid";
   const go = (index: number) => {
     const element = track.current;
     const child = element?.children[index] as HTMLElement | undefined;
@@ -78,8 +78,8 @@ export default function ProjectCarousel({ children, label, thumbnails }: { child
       <button type="button" aria-label="Next slide" disabled={active === count - 1} onClick={() => go(active + 1)} className={`${arrowClass} right-2`}><ChevronRight size={20} /></button>
     </div>
     <div className="mt-6 flex items-center justify-center gap-4 px-6 md:px-10">
-      <p className="text-xs tabular-nums text-slate-400" aria-live="polite">{String(active + 1).padStart(2, "0")} <span className="px-2 text-slate-600">/</span> {String(count).padStart(2, "0")}</p>
+      <p className="text-xs tabular-nums text-muted-foreground" aria-live="polite">{String(active + 1).padStart(2, "0")} <span className="px-2">/</span> {String(count).padStart(2, "0")}</p>
     </div>
-    {thumbnails && count > 1 && <div className="mt-5 flex gap-3 overflow-x-auto pb-2" aria-label="Choose an image">{thumbnails.map((thumbnail, index) => <button key={index} type="button" onClick={() => go(index)} aria-label={`Show image ${index + 1}`} aria-pressed={active === index} className={`relative h-16 w-28 shrink-0 overflow-hidden rounded-lg border-2 ${active === index ? "border-cyan-300" : "border-white/10 opacity-60"}`}>{thumbnail}</button>)}</div>}
+    {thumbnails && count > 1 && <div className="mt-5 flex gap-3 overflow-x-auto pb-2" aria-label="Choose an image">{thumbnails.map((thumbnail, index) => <button key={index} type="button" onClick={() => go(index)} aria-label={`Show image ${index + 1}`} aria-pressed={active === index} className={`relative h-16 w-28 shrink-0 overflow-hidden rounded-lg border-2 ${active === index ? "border-brand" : "border-border opacity-60"}`}>{thumbnail}</button>)}</div>}
   </div>;
 }

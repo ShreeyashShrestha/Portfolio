@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { BiDownload } from "react-icons/bi";
 import { FaCode } from "react-icons/fa";
 import { HiBars3BottomRight } from "react-icons/hi2";
+import ThemeToggle from "./ThemeToggle";
 
 type Props = {
   openNav: () => void;
@@ -31,15 +32,15 @@ const Nav = ({ openNav }: Props) => {
 
   return (
     <div
-      className={`transition-all ${navBg ? "bg-[#0f142ed9] shadow-md" : ""} duration-200 h-20 md:h-[12vh] z-[10000] fixed inset-x-0 top-0 w-full`}
+      className={`transition-all ${navBg ? "bg-card/95 shadow-md" : ""} duration-200 h-20 md:h-[12vh] z-[10000] fixed inset-x-0 top-0 w-full`}
     >
       <div className="flex items-center h-full justify-between w-[90%] mx-auto">
         {/* logo */}
-        <Link href="/" aria-label="Shreeyash home" className="flex items-center space-x-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-col">
-            <FaCode className="w-5 h-5 text-black" />
+        <Link href="/" aria-label="Shreeyash home" className="flex items-center space-x-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+          <div className="w-10 h-10 bg-foreground rounded-full flex items-center justify-center flex-col">
+            <FaCode className="w-5 h-5 text-background" />
           </div>
-          <h1 className="text-xl hidden sm:block md:text-2xl text-white font-bold">
+          <h1 className="text-xl hidden sm:block md:text-2xl text-foreground font-bold">
             Shreeyash
           </h1>
         </Link>
@@ -50,7 +51,7 @@ const Nav = ({ openNav }: Props) => {
               <Link
                 key={link.id}
                 href={link.url}
-                className="text-base hover:text-cyan-300 text-white font-medium transition-all duration-200"
+                className="text-base hover:text-brand text-foreground font-medium transition-all duration-200"
               >
                 <p>{link.Label}</p>
               </Link>
@@ -62,17 +63,19 @@ const Nav = ({ openNav }: Props) => {
           {/* CV button */}
           <div>
             <a href="/Shreeyash_Shrestha_CV.pdf" download={true}>
-              <button className="px-4 sm:px-8 py-3 sm:py-3.5 text-sm cursor-pointer rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 text-white flex items-center space-x-2">
+              <button className="px-4 sm:px-8 py-3 sm:py-3.5 text-sm cursor-pointer rounded-lg bg-primary hover:bg-primary-hover transition-all duration-300 text-primary-foreground flex items-center space-x-2">
                 <BiDownload className="w-5 h-5" />
                 <span>Download CV</span>
               </button>
             </a>
           </div>
 
+          <ThemeToggle />
+
           {/* Burger Menu */}
           <HiBars3BottomRight
             onClick={openNav}
-            className="w-8 h-8 cursor-pointer text-white lg:hidden"
+            className="w-8 h-8 cursor-pointer text-foreground lg:hidden"
           />
         </div>
       </div>

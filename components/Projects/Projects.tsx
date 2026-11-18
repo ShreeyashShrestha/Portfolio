@@ -29,8 +29,8 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
   return (
     <section id="projects" className="pt-10 pb-10" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" className="px-5 text-center text-2xl md:text-4xl xl:text-5xl font-bold text-white">
-        A small selection of recent <br /> <span className="text-cyan-300">projects</span>
+      <h2 id="projects-heading" className="px-5 text-center text-2xl md:text-4xl xl:text-5xl font-bold text-foreground">
+        A small selection of recent <br /> <span className="text-brand">projects</span>
       </h2>
       {items.length ? (
         <div className="relative h-[560px] w-full md:h-[700px]">
@@ -56,7 +56,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
             draggable
             parallax={0.3}
             stretch={0.5}
-            fadeColor="#000000"
+            fadeColor="var(--background)"
             depthFade={0.55}
             innerShade={0.6}
             cornerRadius={12}
@@ -66,7 +66,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
             }}
           />
         </div>
-      ) : <p className="mt-8 text-center text-slate-400">New projects are on the way.</p>}
+      ) : <p className="mt-8 text-center text-muted-foreground">New projects are on the way.</p>}
     </section>
   );
 }

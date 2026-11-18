@@ -51,7 +51,7 @@ export default function Preloader() {
         role="status"
         aria-label="Loading portfolio"
         data-phase={phase}
-        className="portfolio-preloader fixed inset-0 z-[200000] flex items-center justify-center bg-[#0d0d1f] px-6 text-white"
+        className="portfolio-preloader fixed inset-0 z-[200000] flex items-center justify-center bg-background px-6 text-foreground"
       >
         <div aria-hidden="true" className="flex flex-col items-center text-center">
           <p className="preloader-shine text-[clamp(1.5rem,5vw,3.5rem)] font-medium leading-tight tracking-wide">

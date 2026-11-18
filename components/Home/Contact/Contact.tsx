@@ -61,10 +61,10 @@ const Contact = () => {
       <div className="w-full px-5 sm:w-[90%] sm:px-0 md:w-[80%] lg:w-[70%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
         {/* Text Context */}
         <div>
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-200">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             Schedule a call with me to see if I can help
           </h1>
-          <p className="text-gray-400 mt-6 text-base sm:text-lg">
+          <p className="text-muted-foreground mt-6 text-base sm:text-lg">
             Reach out to me today and let&apos;s discuss how I can help you
             achieve your goals.
           </p>
@@ -72,18 +72,18 @@ const Contact = () => {
           {/* info */}
           <div className="mt-7">
             <div className="flex items-center space-x-3 mb-4">
-              <BiPhone className="w-7 h-7 shrink-0 sm:w-9 sm:h-9 text-cyan-300" />
-              <p className="min-w-0 break-words text-base sm:text-xl font-bold text-gray-400">9818009299</p>
+              <BiPhone className="w-7 h-7 shrink-0 sm:w-9 sm:h-9 text-brand" />
+              <p className="min-w-0 break-words text-base sm:text-xl font-bold text-muted-foreground">9818009299</p>
             </div>
             <div className="flex items-center space-x-3 mb-4">
-              <BiEnvelope className="w-7 h-7 shrink-0 sm:w-9 sm:h-9 text-cyan-300" />
-              <p className="min-w-0 break-words text-base sm:text-xl font-bold text-gray-400">
+              <BiEnvelope className="w-7 h-7 shrink-0 sm:w-9 sm:h-9 text-brand" />
+              <p className="min-w-0 break-words text-base sm:text-xl font-bold text-muted-foreground">
                 shreeyashofficialpc1@gmail.com
               </p>
             </div>
             <div className="flex items-center space-x-3 mb-4">
-              <BiMap className="w-7 h-7 shrink-0 sm:w-9 sm:h-9 text-cyan-300" />
-              <p className="min-w-0 break-words text-base sm:text-xl font-bold text-gray-400">
+              <BiMap className="w-7 h-7 shrink-0 sm:w-9 sm:h-9 text-brand" />
+              <p className="min-w-0 break-words text-base sm:text-xl font-bold text-muted-foreground">
                 Bhimsengola, Purano Baneshwor, KTM
               </p>
             </div>
@@ -96,36 +96,36 @@ const Contact = () => {
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-800 transition-all duration-300"
+              className="w-14 h-14 bg-action-muted text-foreground rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-800 hover:text-white transition-all duration-300"
             >
-              <FaFacebook className="text-white w-6 h-6" />
+              <FaFacebook className="w-6 h-6" />
             </a>
             <a
               href="https://github.com/ShreeyashShrestha"
               aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-black transition-all duration-300"
+              className="w-14 h-14 bg-action-muted text-foreground rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-black hover:text-white transition-all duration-300"
             >
-              <FaGithub className="text-white w-6 h-6" />
+              <FaGithub className="w-6 h-6" />
             </a>
             <a
               href="https://www.linkedin.com/in/shreeyash-shrestha-169a67367/"
               aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-700 transition-all duration-300"
+              className="w-14 h-14 bg-action-muted text-foreground rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-700 hover:text-white transition-all duration-300"
             >
-              <FaLinkedin className="text-white w-6 h-6" />
+              <FaLinkedin className="w-6 h-6" />
             </a>
             <a
               href="https://www.instagram.com/shreeyashshresthaa/"
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-pink-500 transition-all duration-300"
+              className="w-14 h-14 bg-action-muted text-foreground rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-pink-700 hover:text-white transition-all duration-300"
             >
-              <FaInstagram className="text-white w-6 h-6" />
+              <FaInstagram className="w-6 h-6" />
             </a>
           </div>
         </div>
@@ -136,12 +136,12 @@ const Contact = () => {
           data-aos="zoom-in"
           data-aos-anchor-placement="top-center"
           data-aos-delay="0"
-          className="md:p-10 p-5 bg-[#131332] rounded-lg"
+          className="md:p-10 p-5 bg-card rounded-lg"
         >
           <input
             type="text"
             placeholder="Name"
-            className="px-4 py-3.5 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70"
+            className="px-4 py-3.5 bg-input text-foreground outline-none rounded-md w-full placeholder:text-muted-foreground ring-1 ring-inset ring-border focus:ring-2 focus:ring-brand"
             name="name"
             autoComplete="name"
             aria-label="Name"
@@ -150,7 +150,7 @@ const Contact = () => {
           <input
             type="email"
             placeholder="Email Address"
-            className="px-4 py-3.5 mt-4 sm:mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70"
+            className="px-4 py-3.5 mt-4 sm:mt-6 bg-input text-foreground outline-none rounded-md w-full placeholder:text-muted-foreground ring-1 ring-inset ring-border focus:ring-2 focus:ring-brand"
             name="email"
             autoComplete="email"
             aria-label="Email address"
@@ -162,20 +162,20 @@ const Contact = () => {
             autoComplete="tel"
             aria-label="Mobile number"
             placeholder="Mobile Number"
-            className="px-4 py-3.5 mt-4 sm:mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70"
+            className="px-4 py-3.5 mt-4 sm:mt-6 bg-input text-foreground outline-none rounded-md w-full placeholder:text-muted-foreground ring-1 ring-inset ring-border focus:ring-2 focus:ring-brand"
           />
           <textarea
             name="message"
             aria-label="Your message"
             required
             placeholder="Your Message"
-            className="px-4 py-3.5 mt-4 sm:mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70 h-[10rem]"
+            className="px-4 py-3.5 mt-4 sm:mt-6 bg-input text-foreground outline-none rounded-md w-full placeholder:text-muted-foreground h-[10rem] ring-1 ring-inset ring-border focus:ring-2 focus:ring-brand"
           ></textarea>
           <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden="true" />
-          <button type="submit" disabled={pending} className="disabled:opacity-60 disabled:cursor-wait mt-6 w-full sm:mt-8 sm:w-auto px-6 sm:px-12 py-4 bg-blue-950 hover:bg-blue-900 transition-all duration-300 cursor-pointer text-white rounded-full">
+          <button type="submit" disabled={pending} className="disabled:opacity-60 disabled:cursor-wait mt-6 w-full sm:mt-8 sm:w-auto px-6 sm:px-12 py-4 bg-primary hover:bg-primary-hover transition-all duration-300 cursor-pointer text-primary-foreground rounded-full">
             {pending ? "Sending..." : "Send Message"}
           </button>
-          <p role="status" aria-live="polite" className={`mt-4 text-sm ${failed ? "text-rose-300" : "text-cyan-200"}`}>{result}</p>
+          <p role="status" aria-live="polite" className={`mt-4 text-sm ${failed ? "text-destructive" : "text-success"}`}>{result}</p>
         </div>
         </form>
       </div>

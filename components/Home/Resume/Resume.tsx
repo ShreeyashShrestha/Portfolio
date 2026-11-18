@@ -12,8 +12,8 @@ const Resume = () => {
       <div className="w-full px-5 sm:w-[85%] sm:px-0 lg:w-[70%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Work part */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white">
-            My Work <span className="text-cyan-200">Experience</span>
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
+            My Work <span className="text-brand">Experience</span>
           </h1>
           <div
             className="mt-6 md:mt-10"
@@ -42,8 +42,8 @@ const Resume = () => {
 
         {/* Education Part */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white">
-            My <span className="text-cyan-200">Education</span>
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
+            My <span className="text-brand">Education</span>
           </h1>
           <div
             className="mt-6 md:mt-10"

@@ -29,7 +29,7 @@ export default function ProjectImage({ src, alt, caption, images, index = 0 }: {
 
   return <>
     <button type="button" onClick={() => { setActive(index); setOpen(true); }} aria-label={`Enlarge image: ${alt}`} aria-haspopup="dialog"
-      className="relative block aspect-[16/10] w-full cursor-zoom-in rounded-xl focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-cyan-300 md:aspect-video">
+      className="relative block aspect-[16/10] w-full cursor-zoom-in rounded-xl focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-brand md:aspect-video">
       <Image src={src} alt={alt} fill sizes="(max-width: 768px) 100vw, 1100px" className="object-contain p-3 md:p-6" unoptimized={src.startsWith("https://")} />
     </button>
     <dialog ref={dialog} aria-label={`Enlarged image: ${current.alt || alt}`} onClose={() => { swipe.current = null; setOpen(false); }}

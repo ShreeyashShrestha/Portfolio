@@ -1174,7 +1174,7 @@ export const LogoLoop = memo<LogoLoopProps>(
       );
       const contentClass = (item: LogoItem) =>
         cx(
-          'inline-flex items-center rounded text-inherit no-underline transition-[opacity,filter,color] duration-[350ms] ease-[ease] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current motion-reduce:transition-none',
+          'inline-flex items-center rounded text-inherit no-underline transition-[opacity,filter,color] duration-[350ms] ease-[ease] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand motion-reduce:transition-none',
           labels === 'below'
             ? 'flex-col gap-[calc(var(--logoloop-logoHeight)*0.22)]'
             : 'gap-[calc(var(--logoloop-logoHeight)*0.3)]',
@@ -1242,7 +1242,7 @@ export const LogoLoop = memo<LogoLoopProps>(
                 <>
                   {visual}
                   {text && (
-                    <span className={labelClass} aria-hidden={!isNode && !!item.alt}>
+                    <span className={cx(labelClass, 'text-foreground dark:text-inherit')} aria-hidden={!isNode && !!item.alt}>
                       {text}
                     </span>
                   )}

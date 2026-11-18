@@ -7,6 +7,7 @@ type Finish = "glossy" | "matte" | "holographic" | "metallic";
 type Metal = "graphite" | "silver" | "gold";
 type Anchor = "left" | "center" | "right";
 type ImageFit = "cover" | "contain";
+type CardFace = "front" | "back";
 type Rgb = [number, number, number];
 type Point = {
   clientX: number;
@@ -25,6 +26,7 @@ interface PathLike {
   ): unknown;
 }
 export interface LanyardProps {
+  face?: CardFace;
   frontImage?: string;
   backImage?: string;
   imageFit?: ImageFit;
@@ -51,6 +53,7 @@ export interface LanyardProps {
   dragOverflow?: number;
 }
 interface Settings {
+  face: CardFace;
   frontImage?: string;
   backImage?: string;
   imageFit: ImageFit;
@@ -150,6 +153,7 @@ interface Physics {
   breeze: number;
 }
 interface Applied {
+  face?: CardFace;
   layoutKey?: string;
   framingKey?: string;
   imageKey?: string;
@@ -732,6 +736,17 @@ const solvePin = (body: Body, grab: Grab, target: THREE.Vector3) => {
   const lambda = distance / bodyWeight(body, r, normal);
   pushBody(body, r, normal.multiplyScalar(lambda));
 };
+const snapToTurn = (sim: Simulation) => {
+  const { body, turn } = sim;
+  const up = scratch.a.set(0, 1, 0);
+  body.quaternion.multiply(scratch.q.setFromAxisAngle(up, turn - sim.twist));
+  body.previousQuaternion.copy(body.quaternion);
+  sim.grab?.rotation.copy(body.quaternion);
+  up.applyQuaternion(body.quaternion);
+  body.angular.addScaledVector(up, -body.angular.dot(up));
+  sim.twist = turn;
+  sim.twistRaw = turn;
+};
 const placeHanging = (sim: Simulation, layout: CardLayout, intro: boolean) => {
   const { nodes, previous, velocities, body, anchor } = sim;
   nodes[0].copy(anchor);
@@ -743,11 +758,12 @@ const placeHanging = (sim: Simulation, layout: CardLayout, intro: boolean) => {
   body.quaternion.identity();
   if (intro)
     body.quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), Math.PI / 2);
+  sim.twist = 0;
+  snapToTurn(sim);
   body.hang.set(0, layout.hangY, 0);
   const offset = scratch.a.copy(body.hang).applyQuaternion(body.quaternion);
   body.position.copy(nodes[JOINTS]).sub(offset);
   body.previous.copy(body.position);
-  body.previousQuaternion.copy(body.quaternion);
   body.velocity.set(0, 0, 0);
   body.angular.set(0, 0, 0);
   for (let i = 0; i <= JOINTS; i++) {
@@ -755,9 +771,6 @@ const placeHanging = (sim: Simulation, layout: CardLayout, intro: boolean) => {
     velocities[i].set(0, 0, 0);
   }
   sim.lengths.fill(sim.rest);
-  sim.turn = 0;
-  sim.twist = 0;
-  sim.twistRaw = 0;
   sim.calm = 0;
 };
 const configureSimulation = (
@@ -900,6 +913,7 @@ const stepSimulation = (
   sim.calm = energy < 2e-4 ? sim.calm + dt : 0;
 };
 const Lanyard = ({
+  face = "front",
   frontImage,
   backImage,
   imageFit = "cover",
@@ -929,6 +943,7 @@ const Lanyard = ({
   const applyRef = useRef<(() => void) | null>(null);
   useEffect(() => {
     settingsRef.current = {
+      face,
       frontImage,
       backImage,
       imageFit: imageFit === "contain" ? "contain" : "cover",
@@ -1174,6 +1189,10 @@ const Lanyard = ({
     };
     const apply = () => {
       const s = settingsRef.current!;
+      if (s.face !== applied.face) {
+        sim.turn = s.face === "back" ? (sim.twist < 0 ? -Math.PI : Math.PI) : 0;
+        if (placed && reducedMotion) snapToTurn(sim);
+      }
       const layoutKey = `${s.orientation}|${s.cornerRadius}`;
       if (layoutKey !== applied.layoutKey) {
         layout = cardLayout(s.orientation, s.cornerRadius);
@@ -1250,6 +1269,7 @@ const Lanyard = ({
       }
       canvas.style.touchAction = s.interactive ? "pan-y" : "auto";
       applied = {
+        face: s.face,
         layoutKey,
         framingKey,
         imageKey,
