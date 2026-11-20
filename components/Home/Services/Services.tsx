@@ -8,7 +8,7 @@ const Services = () => {
         results
       </h1>
       <div className="w-full px-5 sm:w-[85%] sm:px-0 lg:w-[70%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 md:gap-10 md:mt-20 items-start">
-        <div data-aos="fade-right" data-aos-anchor-placement="top-center">
+        <div data-aos="fade-right" data-aos-anchor-placement="top-bottom">
           <ServiceCard
             icon="/Images/s2.png"
             name="Full-Stack Web Development"
@@ -17,7 +17,7 @@ const Services = () => {
         </div>
         <div
           data-aos="fade-right"
-          data-aos-anchor-placement="top-center"
+          data-aos-anchor-placement="top-bottom"
           data-aos-delay="100"
         >
           <ServiceCard
@@ -28,7 +28,7 @@ const Services = () => {
         </div>
         <div
           data-aos="fade-right"
-          data-aos-anchor-placement="top-center"
+          data-aos-anchor-placement="top-bottom"
           data-aos-delay="200"
         >
           <ServiceCard
@@ -39,7 +39,7 @@ const Services = () => {
         </div>
         <div
           data-aos="fade-right"
-          data-aos-anchor-placement="top-center"
+          data-aos-anchor-placement="top-bottom"
           data-aos-delay="300"
         >
           <ServiceCard
