@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { BsArrowRight } from "react-icons/bs";
-import Typewriter from "typewriter-effect";
+import { siteName } from "@/lib/site";
 import { isDarkMode, subscribeToTheme } from "@/lib/theme";
 import Lanyard from "./Lanyard";
 
@@ -16,32 +16,16 @@ const Hero = () => {
           data-aos="fade-up"
           className="mt-2 text-3xl md:mt-6 font-bold tracking-wide sm:text-4xl md:text-5xl lg:text-6xl"
         >
-          Building full-stack, <br /> apps,{" "}
-          <span className="text-brand">with data intelligence</span>
+          {siteName}
         </h1>
-        <h2
+        <p
           data-aos="fade-up"
           data-aos-delay="200"
           className="mt-4 min-h-12 text-sm leading-relaxed font-medium md:mt-5 md:min-h-0 sm:text-xl md:text-lg lg:text-2xl"
         >
-          Hi! I&apos;m Shreeyash - A Passionate
-          <span className="text-brand font-bold">
-            <Typewriter
-              options={{
-                strings: [
-                  "Full Stack Developer",
-                  "Data Engineer",
-                  "Data Enthusiast",
-                ],
-                autoStart: true,
-                loop: true,
-                delay: 75,
-                deleteSpeed: 50,
-                wrapperClassName: "pl-2",
-              }}
-            />
-          </span>
-        </h2>
+          <span className="text-brand font-bold">Full-stack developer</span>{" "}
+          building web apps and data pipelines.
+        </p>
         <Link
           href="/work"
           data-aos="fade-up"

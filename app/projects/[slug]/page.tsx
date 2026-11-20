@@ -14,7 +14,13 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = (await getProjects()).find(item => item.slug === slug);
-  return { title: project ? `${project.title} | Shreeyash Shrestha` : "Project not found", description: project?.summary };
+  if (!project) return { title: "Project not found" };
+
+  return {
+    title: project.title,
+    description: project.summary,
+    alternates: { canonical: `/projects/${encodeURIComponent(project.slug)}` },
+  };
 }
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;

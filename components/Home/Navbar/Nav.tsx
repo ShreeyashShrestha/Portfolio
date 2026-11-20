@@ -40,9 +40,9 @@ const Nav = ({ openNav }: Props) => {
           <div className="w-10 h-10 bg-foreground rounded-full flex items-center justify-center flex-col">
             <FaCode className="w-5 h-5 text-background" />
           </div>
-          <h1 className="text-xl hidden sm:block md:text-2xl text-foreground font-bold">
+          <span className="text-xl hidden sm:block md:text-2xl text-foreground font-bold">
             Shreeyash
-          </h1>
+          </span>
         </Link>
         {/* navLinks */}
         <div className="hidden lg:flex items-center space-x-10">
