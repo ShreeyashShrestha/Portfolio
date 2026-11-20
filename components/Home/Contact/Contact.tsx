@@ -3,7 +3,6 @@
 import { useState, type FormEvent } from "react";
 import { BiEnvelope, BiMap, BiPhone } from "react-icons/bi";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { profileLinks } from "@/lib/site";
 
 const Contact = () => {
   const [result, setResult] = useState("");
@@ -102,7 +101,7 @@ const Contact = () => {
               <FaFacebook className="w-6 h-6" />
             </a>
             <a
-              href={profileLinks.github}
+              href="https://github.com/ShreeyashShrestha"
               aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
@@ -111,7 +110,7 @@ const Contact = () => {
               <FaGithub className="w-6 h-6" />
             </a>
             <a
-              href={profileLinks.linkedin}
+              href="https://www.linkedin.com/in/shreeyash-shrestha-169a67367/"
               aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"

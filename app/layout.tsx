@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import Footer from "@/components/Home/Footer/Footer";
 import ScrollToTop from "@/components/Helper/ScrollToTop";
 import Preloader from "@/components/Helper/Preloader";
-import { siteName, siteUrl } from "@/lib/site";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -16,11 +15,8 @@ const font = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: siteName,
-    template: `%s | ${siteName}`,
-  },
+  title: "Shreeyash Shrestha Portfolio",
+  description: "Portfolio built with Next.js",
 };
 
 export const viewport: Viewport = {
