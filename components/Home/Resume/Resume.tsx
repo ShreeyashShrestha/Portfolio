@@ -60,7 +60,7 @@ const Resume = () => {
             />
             <ResumeCard
               Icon={BiBadge}
-              role="Data Engineering Trainig"
+              role="Data Engineering Training"
               company="Dlytica Academy"
               date="Nov 2025 - Mar 2026"
               description="Focused on building end-to-end data pipelines, ETL workflows, database architecture, big data processing, and cloud-based data orchestration."

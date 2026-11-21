@@ -15,8 +15,8 @@ const font = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Shreeyash Shrestha Portfolio",
-  description: "Portfolio built with Next.js",
+  title: "Shreeyash Shrestha | Full-Stack Web Developer & Data Engineer",
+  description: "I’m Shreeyash Shrestha, a full-stack web developer, data engineer, data scientist, and data analyst. Explore my projects and resume.",
 };
 
 export const viewport: Viewport = {
